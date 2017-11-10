@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Stream RTC</title>
+  </head>
+  <body>
+    <h1>Nguyen Hoang Thang</h1>
+    <video id="localStream" width="1000" controls></video>
+  </body>
+  <script>
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true})
+    .then(stream => {
+      const video = document.getElementById('localStream')
+      video.srcObject = stream;
+      video.onloadedmetadata = function(){
+        video.play();
+      };
+    })
+    .catch(err => console.log(err))
+  </script>
+</html>
